@@ -4,16 +4,13 @@
     <AzureFunctionsVersion>v4</AzureFunctionsVersion>
     <RootNamespace>GraphACSFunctions</RootNamespace>
   </PropertyGroup>
-  <ItemGroup>
-    <None Remove="local.settings.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="local.settings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
+	<ItemGroup Condition="'$(Configuration)' == 'Debug'">
+	  <Content Include="local.settings.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+	  </Content>
+	</ItemGroup>
+	<ItemGroup>
     <PackageReference Include="Azure.Communication.Identity" Version="1.2.0" />
     <PackageReference Include="Azure.Identity" Version="1.8.2" />
     <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
